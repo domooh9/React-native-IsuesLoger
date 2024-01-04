@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TextInput, Alert, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import Update from './Update'; // Import the Update component
 import Updatestyle from '../style/Updatestyle';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Read = ({ navigation }) => {
   const [issues, setIssues] = useState([]);
   const [selectedIssue, setSelectedIssue] = useState(null);
+  const [updatedText, setUpdatedText] = useState('');
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const Read = ({ navigation }) => {
 
   const fetchIssues = async () => {
     try {
-      const response = await axios.get('https://crudcrud.com/api/9ac036badf0e4c6c9271c7bbd52e3ad1/creating');
+      const response = await axios.get('https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read');
       if (response.status === 200) {
         setIssues(response.data);
       } else {
@@ -29,7 +30,7 @@ const Read = ({ navigation }) => {
 
   const deleteIssue = async (id) => {
     try {
-      const response = await axios.delete(`https://crudcrud.com/api/9ac036badf0e4c6c9271c7bbd52e3ad1/creating/${id}`);
+      const response = await axios.delete(`https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read/${id}`);
       if (response.status === 200) {
         fetchIssues(); // Refresh the list after deletion
       } else {
@@ -41,12 +42,34 @@ const Read = ({ navigation }) => {
     }
   };
 
+  const updateIssue = async () => {
+    try {
+      const response = await axios.put(`https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read/${selectedIssue}`, {
+        text: updatedText,
+      });
+      if (response.status === 200) {
+        fetchIssues(); // Refresh the list after update
+        setSelectedIssue(null); // Reset selected issue
+        setUpdatedText(''); // Clear the input field
+      } else {
+        Alert.alert('Error', 'Failed to update issue');
+      }
+    } catch (error) {
+      console.error('Error updating issue:', error);
+      Alert.alert('Error', 'An error occurred while updating the issue');
+    }
+  };
+
   const handleUpdatePress = (issueId) => {
     setSelectedIssue(issueId);
+    // Fetch the current text of the selected issue
+    const selectedIssueText = issues.find((issue) => issue._id === issueId)?.text;
+    setUpdatedText(selectedIssueText || '');
   };
 
   const handleCancelUpdate = () => {
     setSelectedIssue(null);
+    setUpdatedText('');
   };
 
   const handleRefresh = () => {
@@ -63,10 +86,10 @@ const Read = ({ navigation }) => {
           <View style={Updatestyle.issueContainer}>
             <Text style={Updatestyle.issueText}>{item.text}</Text>
             <TouchableOpacity onPress={() => handleUpdatePress(item._id)}>
-              <Text style={Updatestyle.button}>Update</Text>
+              <Text style={Updatestyle.button}><Icon name="pencil" size={15} color="black" /></Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => deleteIssue(item._id)}>
-              <Text style={Updatestyle.button}>Delete</Text>
+              <Text style={Updatestyle.button}><Icon name="trash-o" size={15} color="red" /></Text>
             </TouchableOpacity>
           </View>
         )}
@@ -75,12 +98,21 @@ const Read = ({ navigation }) => {
         <Text style={Updatestyle.buttonText}>Refresh</Text>
       </TouchableOpacity>
 
-      {selectedIssue && (
-        <Update
-          issueId={selectedIssue}
-          refreshRead={handleRefresh}
-          onCancel={handleCancelUpdate}
-        />
+      {selectedIssue !== null && (
+        <View style={Updatestyle.updateContainer}>
+          <TextInput
+            style={Updatestyle.input}
+            placeholder="Enter updated text"
+            value={updatedText}
+            onChangeText={(text) => setUpdatedText(text)}
+          />
+          <TouchableOpacity style={Updatestyle.refreshButton} onPress={updateIssue}>
+            <Text style={Updatestyle.buttonText}>Update</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={Updatestyle.refreshButton} onPress={handleCancelUpdate}>
+            <Text style={Updatestyle.buttonText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
       )}
     </View>
   );

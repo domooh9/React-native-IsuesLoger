@@ -6,7 +6,7 @@ import Read from './crud/Read';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Create />
+       <Create />
       <Read />
       <StatusBar style="auto" />
     </View>
@@ -16,8 +16,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'whitesmoke',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
 });
