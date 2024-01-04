@@ -8,7 +8,7 @@ const Create = ({ navigation, refreshRead }) => {
 
   const createIssue = async () => {
     try {
-      const response = await axios.post('https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read', {
+      const response = await axios.post('https://crudcrud.com/api/89a2df64215a423d90a939431c4a269f/read', {
         text: issueText,
       });
 

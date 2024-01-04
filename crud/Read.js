@@ -16,7 +16,7 @@ const Read = ({ navigation }) => {
 
   const fetchIssues = async () => {
     try {
-      const response = await axios.get('https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read');
+      const response = await axios.get('https://crudcrud.com/api/89a2df64215a423d90a939431c4a269f/read');
       if (response.status === 200) {
         setIssues(response.data);
       } else {
@@ -30,7 +30,7 @@ const Read = ({ navigation }) => {
 
   const deleteIssue = async (id) => {
     try {
-      const response = await axios.delete(`https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read/${id}`);
+      const response = await axios.delete(`https://crudcrud.com/api/89a2df64215a423d90a939431c4a269f/read/${id}`);
       if (response.status === 200) {
         fetchIssues(); // Refresh the list after deletion
       } else {
@@ -44,7 +44,7 @@ const Read = ({ navigation }) => {
 
   const updateIssue = async () => {
     try {
-      const response = await axios.put(`https://crudcrud.com/api/24c4607bd64f47aea54d99701af5e0eb/read/${selectedIssue}`, {
+      const response = await axios.put(`https://crudcrud.com/api/89a2df64215a423d90a939431c4a269f/read/${selectedIssue}`, {
         text: updatedText,
       });
       if (response.status === 200) {

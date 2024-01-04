@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#41644A',
     borderRadius: 10,
-    width: '90%', // Use percentage-based width
-    maxWidth: 400, // Set a maximum width for the container
-    alignSelf: 'center', // Center the container horizontally
+    width: '90%',
+    maxWidth: 400,
+    alignSelf: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -22,13 +22,14 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#F2E3DB',
   },
   issueContainer: {
     marginBottom: 15,
     borderBottomWidth: 1,
     paddingBottom: 10,
-    backgroundColor: '#f0f0f0', // Grey background color
-    borderRadius: 8, // Optional: Add border-radius for rounded corners
+    backgroundColor: '#F2E3DB', 
+    borderRadius: 8, 
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -37,48 +38,48 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    flexDirection: 'row', // Arrange children in a row
-    justifyContent: 'space-between', // Space between the text and icons
-    alignItems: 'center', // Vertically center the content
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
   },
 
-  // Your existing styles...
-
-  // Style for the icons
   iconContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    marginTop: 'auto',
   },
 
   issueText: {
     fontSize: 16,
     marginBottom: 5,
     fontFamily: 'serif',
+    color: '#263A29'
   },
   button: {
-    color: 'blue',
+    color: '#E86A33',
     fontSize: 16,
-    marginVertical: 5,
+    marginLeft: 'auto',
+    
   },
   refreshButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#E86A33',
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
+    color: '#263A29',
     textAlign: 'center',
-    fontSize: 16,
+    fontWeight: 'bold',
   },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    height: 60,
     borderWidth: 1,
-    marginBottom: 10,
+    marginTop: 10,
     paddingHorizontal: 8,
     width: '100%',
-    borderRadius: 5, // Use a numeric value for borderRadius
+    borderRadius: 5, 
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -87,5 +88,8 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    color: '#263A29',
+    backgroundColor: '#F2E3DB',
   },
+  
 });
