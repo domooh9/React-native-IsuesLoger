@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,Text } from 'react-native';
 import axios from 'axios';
 import Create from './crud/Create';
 import Read from './crud/Read';
-import { Text } from 'react-native-web';
+// import { Text } from 'react-native-web';
 
 export default function App() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -47,7 +47,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     {/* <Text style={styles.title}>IssueLogger</Text> */}
+     <Text style={styles.title}>IssueLogger</Text>
       <Create refreshRead={fetchIssues} />
       <Read
         fetchedData={issues}

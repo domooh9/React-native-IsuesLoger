@@ -61,8 +61,7 @@ export default StyleSheet.create({
   button: {
     color: '#E86A33',
     fontSize: 16,
-    marginLeft: 'auto',
-    
+    marginLeft: 'auto',  
   },
   refreshButton: {
     backgroundColor: '#E86A33',

@@ -46,14 +46,14 @@ const Read = ({ fetchedData, updateIssue, fetchIssues, handleRefresh }) => {
       data={fetchedData}
       keyExtractor={(item) => item._id}
       renderItem={({ item }) => (
-        <View style={Updatestyle.issueContainer}>
+        <View style={[Updatestyle.issueContainer, { paddingBottom: 13 }]}>
   <Text style={Updatestyle.issueText}>{item.text}</Text>
-  <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end', position: 'absolute', bottom: 0, left: 0, }}>
+  <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end', position: 'absolute', bottom: 0, left: 0,}}>
     <TouchableOpacity onPress={() => handleUpdatePress(item._id)}>
-      <Text style={[Updatestyle.button, { marginLeft: 6 }]}><Icon name="pencil" size={15} color="black" /></Text>
+      <Text style={[Updatestyle.button, { marginLeft: 8 }]}><Icon name="pencil" size={15} color="black" /></Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => deleteIssue(item._id)}>
-      <Text style={[Updatestyle.button, { marginLeft: 8 }]}><Icon name="trash-o" size={15} color="red" /></Text>
+      <Text style={[Updatestyle.button, { marginLeft: 10 }]}><Icon name="trash-o" size={15} color="red" /></Text>
     </TouchableOpacity>
   </View>
 </View>
