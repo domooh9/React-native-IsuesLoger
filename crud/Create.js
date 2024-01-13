@@ -8,17 +8,15 @@ const Create = ({ navigation, refreshRead }) => {
 
   const createIssue = async () => {
     try {
-      const response = await axios.post('https://crudcrud.com/api/89a2df64215a423d90a939431c4a269f/read', {
+      const response = await axios.post('https://crudcrud.com/api/ef96cc6325ef4833bb5a05d4a7adc9b0/read', {
         text: issueText,
       });
 
       if (response.status === 201) {
-        refreshRead(); // Assuming this function triggers a refresh in the parent component
+        refreshRead(); 
         if (navigation && navigation.goBack) {
           navigation.goBack();
-        } else {
-          console.error('Navigation object or goBack method is undefined');
-        }
+        } 
       } else {
         console.error('Failed to create issue. Status:', response.status);
       }
@@ -27,8 +25,8 @@ const Create = ({ navigation, refreshRead }) => {
     }
   };
 
-  return (
-    <View style={Createstyle.container}>
+  return ( 
+     <View style={Createstyle.container}>
       <TextInput
         style={Createstyle.input}
         placeholder="Create Issue"

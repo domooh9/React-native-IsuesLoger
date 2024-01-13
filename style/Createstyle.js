@@ -47,5 +47,11 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  contain: {
+    flex: 1,
+    backgroundColor: '#F2E3DB',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 

@@ -41,6 +41,8 @@ export default StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center', 
+    paddingLeft: 3,
+    paddingBottom: 6,
   },
 
   iconContainer: {
